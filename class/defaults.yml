@@ -1,0 +1,4 @@
+parameters:
+  cm_hetznercloud:
+    =_metadata: {}
+    namespace: syn-cm-hetznercloud
