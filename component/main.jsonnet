@@ -7,4 +7,10 @@ local params = inv.parameters.cm_hetznercloud;
 
 // Define outputs below
 {
+  '20_hcloud_token': kube.Secret('hcloud') {
+    stringData: {
+      token: params.hcloudToken,
+      network: params.hcloudNetwork,
+    },
+  },
 }

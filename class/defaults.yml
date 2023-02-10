@@ -1,4 +1,16 @@
 parameters:
   cm_hetznercloud:
     =_metadata: {}
-    namespace: syn-cm-hetznercloud
+    namespace: kube-system
+
+    manifestVersion: v1.13.2
+    kustomizeInput: {}
+
+    images:
+      controller_manager:
+        registry: docker.io
+        repository: hetznercloud/hcloud-cloud-controller-manager
+        tag: ${cm_hetznercloud:manifestVersion}
+
+    hcloudToken: insertCoin
+    hcloudNetwork: ""
