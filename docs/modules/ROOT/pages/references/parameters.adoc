@@ -2,18 +2,28 @@
 
 The parent key for all of the following parameters is `cm_hetznercloud`.
 
-== `namespace`
+== `hcloudNetwork`
 
 [horizontal]
 type:: string
-default:: `syn-cm-hetznercloud`
+default:: ``
 
-The namespace in which to deploy this component.
+Name of the network, the cluster is in.
 
+== `hcloudToken`
+
+[horizontal]
+type:: string
+default:: `insertCoin`
+
+The token to access the hetzner cloud api.
+
+See https://docs.hetzner.com/de/cloud/api/getting-started/generating-api-token/[Hetzner Documentation] on how to create a token.
 
 == Example
 
 [source,yaml]
 ----
-namespace: example-namespace
+csi_hetznercloud:
+  hcloudToken: my-project-token
 ----
