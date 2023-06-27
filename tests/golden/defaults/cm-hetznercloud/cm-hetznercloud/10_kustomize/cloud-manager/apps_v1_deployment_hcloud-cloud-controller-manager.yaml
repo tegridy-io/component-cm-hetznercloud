@@ -17,26 +17,30 @@ spec:
       containers:
       - command:
         - /bin/hcloud-cloud-controller-manager
+        - --allow-untagged-cloud
         - --cloud-provider=hcloud
         - --leader-elect=false
-        - --allow-untagged-cloud
+        - --route-reconciliation-period=30s
         env:
         - name: HCLOUD_NETWORK
           valueFrom:
             secretKeyRef:
               key: network
               name: hcloud
-        - name: NODE_NAME
-          valueFrom:
-            fieldRef:
-              fieldPath: spec.nodeName
         - name: HCLOUD_TOKEN
           valueFrom:
             secretKeyRef:
               key: token
               name: hcloud
-        image: docker.io/hetznercloud/hcloud-cloud-controller-manager:v1.13.2
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        image: docker.io/hetznercloud/hcloud-cloud-controller-manager:v1.16.0
         name: hcloud-cloud-controller-manager
+        ports:
+        - containerPort: 8233
+          name: metrics
         resources:
           requests:
             cpu: 100m
@@ -56,5 +60,5 @@ spec:
       - effect: NoSchedule
         key: node-role.kubernetes.io/control-plane
         operator: Exists
-      - effect: NoSchedule
+      - effect: NoExecute
         key: node.kubernetes.io/not-ready

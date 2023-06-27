@@ -3,7 +3,7 @@ parameters:
     =_metadata: {}
     namespace: kube-system
 
-    manifestVersion: v1.13.2
+    manifestVersion: v1.16.0
     kustomizeInput: {}
 
     images:
