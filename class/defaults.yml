@@ -1,6 +1,8 @@
 parameters:
   cm_hetznercloud:
-    =_metadata: {}
+    =_metadata:
+      multi_tenant: true
+
     namespace: kube-system
 
     manifestVersion: v1.16.0
