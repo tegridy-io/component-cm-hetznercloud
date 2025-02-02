@@ -5,7 +5,7 @@ parameters:
 
     namespace: kube-system
 
-    manifestVersion: v1.16.0
+    manifestVersion: v1.23.0
     kustomizeInput: {}
 
     images:
